@@ -1,1 +1,84 @@
-HBJJJ
+//Minimum and Maximum elements
+//METHOD 1
+#include<iostream>
+using namespace std;
+struct Pair
+{
+    int min;
+    int max;
+};
+Pair getMinMax(int arr[],int n){
+    struct Pair minmax;
+    if(n==1)
+    {
+        minmax.min=arr[0];
+        minmax.max=arr[0];
+        return minmax;
+    }
+    if(arr[0]>arr[1]){
+        minmax.min=arr[1];
+        minmax.max=arr[0];
+    }
+    else{
+        minmax.min=arr[0];
+        minmax.max=arr[1];
+    }
+    for(int i=2;i<n;i++){
+        if(arr[i]>minmax.max){
+            minmax.max=arr[i];
+        }
+        if(arr[i]<minmax.min){
+            minmax.min=arr[i];
+        }
+    }
+    return minmax;
+};
+int main()
+{
+    int arr[]={11,4,5,2,3,10,1,78};
+    int n=8;
+    struct Pair minmax=getMinMax(arr,n);
+    cout<<"Minimum element is "<<minmax.min<<endl;
+    cout<<"Maximum element is "<<minmax.max<<endl;
+    return 0;
+}
+
+//METHOD 2
+#include<iostream>
+using namespace std;
+void minmax(int arr[],int n)
+{
+    if(n==1)
+    {
+        cout<<"Minimum element is: "<<arr[0]<<endl;
+        cout<<"Maximum element is: "<<arr[0]<<endl;
+    }
+    else{
+        int min=arr[0];
+        int max=arr[0];
+        for(int i=0;i<n;i++){
+            if(arr[i]>=max)
+            {
+                max=arr[i];
+            }
+            if(arr[i]<=min){
+                min=arr[i];
+            }
+        }
+        cout<<"Minimum element is: "<<min<<endl;
+        cout<<"Maximum element is: "<<max<<endl;
+    }
+    
+};
+int main()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    minmax(arr,n);
+    return 0;
+}
