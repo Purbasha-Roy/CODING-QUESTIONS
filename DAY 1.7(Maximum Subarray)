@@ -1,0 +1,14 @@
+//Maximum Subarray
+    int maxSubArray(vector<int>& nums) {
+        int maxi=INT_MIN;
+        int currentsum=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            currentsum=currentsum+nums[i];
+            maxi=max(currentsum,maxi);
+            if(currentsum<0){
+                currentsum=0;
+            }
+        }
+        return maxi;
+    }
