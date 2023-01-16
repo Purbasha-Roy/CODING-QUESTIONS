@@ -1,4 +1,4 @@
-//Minimum and Maximum elements
+//Minimum and Maximum elements in array
 //METHOD 1
 #include<iostream>
 using namespace std;
