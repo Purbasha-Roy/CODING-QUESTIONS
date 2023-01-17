@@ -1,0 +1,21 @@
+//Maximum Product Subarray
+int maxProduct(vector<int>& nums) {
+        int currentproduct=1;
+        int maximum=INT_MIN;
+        for(int i=0;i<nums.size();i++){
+            currentproduct=currentproduct*nums[i];
+            maximum=max(currentproduct,maximum);
+            if(currentproduct==0){
+                currentproduct=1;
+            }
+        }
+        currentproduct=1;
+        for(int i=nums.size()-1;i>=0;i--){
+            currentproduct=currentproduct*nums[i];
+            maximum=max(currentproduct,maximum);
+            if(currentproduct==0){
+                currentproduct=1;
+            }
+        }
+        return maximum;        
+}
