@@ -1,0 +1,14 @@
+ //Remove Consecutive Characters
+    string removeConsecutiveCharacter(string S)
+    {
+        // code here.
+        int n=S.size();
+        string ans="";
+        for(int i=0;i<n-1;i++){
+            if(S[i]!=S[i+1]){
+                ans=ans+S[i];
+            }
+        }
+        ans=ans+S[n-1];
+        return ans;
+    }
