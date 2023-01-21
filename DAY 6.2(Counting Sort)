@@ -1,0 +1,6 @@
+//Counting Sort
+    string countSort(string arr){
+        // code here
+        sort(arr.begin(),arr.end());
+        return arr;
+    }
