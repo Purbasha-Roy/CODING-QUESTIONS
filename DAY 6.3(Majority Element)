@@ -1,0 +1,21 @@
+//Majority Element
+    int majorityElement(int a[], int size)
+    {
+        int max=a[0];
+        for(int i=0;i<size;i++)
+        {
+            if(a[i]>max){
+                max=a[i];
+            }
+        }
+        int n=max+1;
+        int count[n]={0};
+        int ans=-1;
+        for(int i=0;i<size;i++){
+            count[a[i]]=count[a[i]]+1;
+            if(count[a[i]]>size/2){
+                ans=a[i];
+            }
+        }
+        return ans;
+    }
