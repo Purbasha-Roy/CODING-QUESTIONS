@@ -1,0 +1,17 @@
+//Difference Between Element Sum and Digit Sum of an Array
+int differenceOfSum(vector<int>& nums) {
+        int sum=0;
+        int n=nums.size();
+        for(int i=0;i<n;i++){
+            sum=sum+nums[i];
+        }
+        int digitsum=0;
+        for(int i=0;i<n;i++){
+            int k=nums[i];
+            while(k>0){
+                digitsum=digitsum+k%10;
+                k=k/10;
+            }
+        }
+        return abs(digitsum-sum);
+    }
