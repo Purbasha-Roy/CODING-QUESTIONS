@@ -1,0 +1,15 @@
+//Kids With the Greatest Number of Candies
+vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
+        vector<bool> candy;
+        int n=candies.size();
+        int max=INT_MIN;
+        for(int i=0;i<n;i++){
+            if(candies[i]>max){
+                max=candies[i];
+            }
+        }
+        for(int i=0;i<n;i++){
+            candy.push_back(candies[i]+extraCandies>=max);
+        }
+       return candy; 
+    }
