@@ -1,0 +1,14 @@
+//Reverse a Stack
+void reverseStack(stack<int> &input, stack<int> &extra) {
+    //Write your code here
+    int n=input.size();
+    for(int i=0;i<n;i++){
+        int a=input.top();
+        input.pop();
+        extra.push(a);
+    }
+    for(int i=0;i<n;i++){
+        cout<<extra.top()<<" ";
+        extra.pop();
+    }   
+}
