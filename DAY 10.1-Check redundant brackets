@@ -1,0 +1,21 @@
+//
+#include<stack>
+bool checkRedundantBrackets(string s1) {
+	// Write your code here
+	stack<char> s;
+	int n=s1.size();
+	for(int i=0;i<n;i++){
+		if(s1[i]=='(' || s1[i]=='+' || s1[i]=='-' || s1[i]=='*' || s1[i]=='/'){
+			s.push(s1[i]);
+		}
+		else if(s1[i]==')'){
+			char a=s.top();
+			if(a=='('){
+				return true;
+			}
+			s.pop();
+			s.pop();
+		}
+	}
+	return false;
+}
