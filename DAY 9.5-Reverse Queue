@@ -1,0 +1,12 @@
+//Reverse Queue
+#include<queue>
+void reverseQueue(queue<int> &input) {
+	// Write your code here
+	if(input.empty()){
+		return;
+	}
+	int a=input.front();
+	input.pop();
+	reverseQueue(input);
+	input.push(a);
+}
