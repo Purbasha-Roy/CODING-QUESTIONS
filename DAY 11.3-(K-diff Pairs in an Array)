@@ -1,0 +1,48 @@
+//K-diff Pairs in an Array
+//METHOD 1
+int findPairs(vector<int>& nums, int k) {
+        sort(nums.begin(),nums.end());
+        int i=0;
+        int j=1;
+        int count=0;
+        while(i<nums.size() && j<nums.size()){
+            if(nums[j]-nums[i]==k){
+                count++;
+                i++;
+                j++;
+                while(j<nums.size() && nums[j]==nums[j-1]){
+                    j++;
+                }
+            }
+            else if(nums[j]-nums[i]>k){
+                i++;
+                if(j-i==0){
+                    j++;
+                }
+            }
+            else{
+                j++;
+            }
+        }
+        return count;
+    }
+    
+    //METHOD 2
+    int findPairs(vector<int>& nums, int k) {
+        unordered_map<int,int> diff;
+        for(int i=0;i<nums.size();i++){
+            diff[nums[i]]++;
+        }
+        int count=0;
+        unordered_map<int,int>::iterator it=diff.begin();
+        while(it!=diff.end()){
+            if(k==0 && it->second>1){
+                count++;
+            }
+            else if(k!=0 && diff.count(k+it->first)>0){
+                count++;
+            }
+            it++;
+        }
+        return count;
+    }
