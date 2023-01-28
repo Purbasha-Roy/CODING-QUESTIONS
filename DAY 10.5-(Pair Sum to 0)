@@ -1,0 +1,15 @@
+//Pair Sum to 0
+#include<unordered_map>
+int pairSum(int *arr, int n) {
+	// Write your code here
+	int count=0;
+	unordered_map<int,int> sum;
+	for(int i=0;i<n;i++){
+		int value=-arr[i];
+		if(sum[value]>0){
+			count=count+sum[value];
+		}
+		sum[arr[i]]++;
+	}
+	return count;
+}
