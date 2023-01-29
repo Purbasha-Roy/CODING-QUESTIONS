@@ -1,0 +1,18 @@
+//Overlapping Intervals
+    vector<vector<int>> overlappedInterval(vector<vector<int>>& intervals) {
+         // Code here
+         vector<vector<int>> merged;
+         sort(intervals.begin(),intervals.end());
+         vector<int> temp=intervals[0];
+         for(auto i:intervals){
+             if(i[0]<=temp[1]){
+                 temp[1]=max(temp[1],i[1]);
+             }
+             else{
+                 merged.push_back(temp);
+                 temp=i;
+             }
+         }
+         merged.push_back(temp);
+         return merged;
+    }
