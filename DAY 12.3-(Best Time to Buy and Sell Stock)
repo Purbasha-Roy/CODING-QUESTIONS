@@ -1,0 +1,46 @@
+//Best Time to Buy and Sell Stock
+//METHOD 1
+    int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        int profit=0;
+        for(int i=0;i<n;i++){
+            for(int i=0;i<n-1;i++){
+                for(int j=i+1;j<n;j++){
+                    profit=max(profit,(prices[j]-prices[i]));
+                }
+            }
+        }
+        return profit;
+    }
+    
+//METHOD 2
+    int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        int buy[n];
+        buy[0]=prices[0];
+        for(int i=1;i<n;i++){
+            buy[i]=min(prices[i],buy[i-1]);
+        }
+        int sell[n];
+        sell[n-1]=prices[n-1];
+        for(int i=n-2;i>=0;i--){
+            sell[i]=max(prices[i],sell[i+1]);
+        }
+        int profit=0;
+        for(int i=0;i<n;i++){
+            profit=max(profit,sell[i]-buy[i]);
+        }
+        return profit;
+    }
+    
+//METHOD 3
+    int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        int profit=0;
+        int mins=prices[0];
+        for(int i=0;i<n;i++){
+            mins=min(mins,prices[i]);
+            profit=max(profit,prices[i]-mins);
+        }
+        return profit;
+    }
