@@ -1,0 +1,18 @@
+//Find a node in LL (recursive)
+int findNodeRec(Node *head, int n)
+{
+	//Write your code here
+    if(head==NULL || head->next==NULL){
+        return -1;
+    }
+    if(head->data==n){
+        return 0;
+    }
+    int pos=findNodeRec(head->next, n);
+    if(pos!=-1){
+        return 1+pos;
+    }
+    else{
+        return pos;
+    }
+}
