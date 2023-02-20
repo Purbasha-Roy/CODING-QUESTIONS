@@ -1,0 +1,18 @@
+//Maximum Number of Words Found in Sentences
+    int mostWordsFound(vector<string>& sentences) {
+        int max=0;
+        for(int i=0;i<sentences.size();i++){
+            int count=0;
+            string countstring=sentences[i];
+            for(int j=0;j<countstring.size();j++){
+                if(countstring[j]==' '){
+                    count++;
+                }
+            }
+            count++;
+            if(count>max){
+                max=count;
+            }
+        }
+        return max;  
+    }Maximum Number of Words Found in Sentences
