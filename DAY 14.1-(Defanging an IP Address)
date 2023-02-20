@@ -1,0 +1,13 @@
+//Defanging an IP Address
+    string defangIPaddr(string address) {
+        string newstring;
+        for(int i=0;i<address.size();i++){
+            if(address[i]!='.'){
+                newstring+=address[i];
+            }
+            else{
+                newstring+="[.]";
+            }
+        }
+        return newstring;   
+    }
