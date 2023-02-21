@@ -1,0 +1,16 @@
+//Check If N and Its Double Exist
+//METHOD 1(O(n^2)
+    bool checkIfExist(vector<int>& arr) {
+        bool output=false;
+        int n=arr.size();
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(arr[i]==2*arr[j] && i!=j){
+                    output=true;
+                }
+            }
+        }
+        return output;
+    }
+    
+//METHOD 2(O(n))
