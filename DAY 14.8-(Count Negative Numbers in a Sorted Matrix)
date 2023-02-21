@@ -1,0 +1,13 @@
+//Count Negative Numbers in a Sorted Matrix
+    int countNegatives(vector<vector<int>>& grid) {
+        int count=0;
+        for(int i=0;i<grid.size();i++){
+            vector<int> ans=grid[i];
+            for(int j=0;j<ans.size();j++){
+                if(ans[j]<0){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
