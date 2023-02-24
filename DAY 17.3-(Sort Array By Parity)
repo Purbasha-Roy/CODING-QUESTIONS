@@ -1,0 +1,22 @@
+//Sort Array By Parity
+    vector<int> sortArrayByParity(vector<int>& nums) {
+        vector<int> ans;
+        int i=0;
+        int j=nums.size()-1;
+        while(i<j)
+        {
+            if(nums[j]%2==0){
+                int temp=nums[i];
+                nums[i]=nums[j];
+                nums[j]=temp;
+                i++;
+            }
+            else{
+                j--;
+            }
+        }
+        for(int m=0;m<nums.size();m++){
+            ans.push_back(nums[m]);
+        }
+        return ans;   
+    }
