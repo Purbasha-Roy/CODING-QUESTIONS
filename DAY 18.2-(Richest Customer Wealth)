@@ -1,0 +1,28 @@
+//Richest Customer Wealth
+//METHOD 1
+int maximumWealth(vector<vector<int>>& accounts) {
+        int n=accounts.size();
+        int ans=0;
+        for(int i=0;i<n;i++){
+            int sum=0;
+            vector<int> next=accounts[i];
+            for(int j=0;j<next.size();j++){
+                sum+=next[j];
+            }
+            if(sum>ans){
+                ans=sum;
+            }
+        }
+        return ans;
+    }
+    
+//METHOD 2
+int maximumWealth(vector<vector<int>>& accounts) {
+        int n=accounts.size();
+        int ans=0;
+        for(int i=0;i<n;i++){
+            int sum=accumulate(accounts[i].begin(),accounts[i].end(),0);
+            ans=max(ans,sum);
+        }
+        return ans;
+    }
