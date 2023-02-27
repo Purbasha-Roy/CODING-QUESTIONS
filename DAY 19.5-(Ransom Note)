@@ -1,0 +1,19 @@
+//Ransom Note
+    bool canConstruct(string ransomNote, string magazine) {
+        int m=ransomNote.size();
+        int n=magazine.size();
+        unordered_map<char,int> count;
+        bool ans=true;
+        for(int i=0;i<m;i++){
+            count[ransomNote[i]]++;
+        }
+        for(int i=0;i<n;i++){
+            count[magazine[i]]--;
+        }
+        for(auto i:count){
+            if(i.second>0){
+                ans=false;
+            }
+        }
+        return ans;
+    }
