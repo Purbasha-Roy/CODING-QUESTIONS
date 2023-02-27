@@ -1,0 +1,29 @@
+//Bulls and Cows
+string getHint(string secret, string guess) {
+        map<char,int> count;
+        for(int i=0;i<secret.size();i++){
+            count[secret[i]]++;
+        }
+        int bull=0;
+        for(int i=0;secret[i]!='\0';i++){
+            if(secret[i]==guess[i]){
+                bull++;
+                count[secret[i]]--;
+            }
+        }
+        int cows=0;
+        for(int i=0;i<secret.size();i++){
+            if(secret[i]!=guess[i]){
+                if(count[guess[i]]>=1){
+                    cows++;
+                    count[guess[i]]--;
+                }
+            }
+        }
+        string ans="";
+        ans+=to_string(bull);
+        ans+='A';
+        ans+=to_string(cows);
+        ans+='B';
+        return ans;
+    }
