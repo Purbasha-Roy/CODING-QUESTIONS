@@ -1,0 +1,27 @@
+//Left and Right Sum Differences
+    vector<int> leftRigthDifference(vector<int>& nums) {
+        vector<int> left;
+        vector<int> right;
+        int n=nums.size();
+        left.push_back(0);
+        int leftsum=0;
+        for(int i=0;i<n-1;i++){
+            leftsum=leftsum+nums[i];
+            left.push_back(leftsum);
+        }
+        int rightsum=0;
+        for(int i=1;i<n;i++){
+            rightsum=rightsum+nums[i];
+        }
+        right.push_back(rightsum);
+        for(int i=1;i<n;i++){
+            rightsum=rightsum-nums[i];
+            right.push_back(rightsum);
+        }
+        vector<int> ans;
+        for(int i=0;i<n;i++){
+            int j=abs(right[i]-left[i]);
+            ans.push_back(j);
+        }
+        return ans;
+    }
