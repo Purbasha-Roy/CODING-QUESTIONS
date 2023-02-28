@@ -1,0 +1,4 @@
+//Strictly Palindromic Number
+bool isStrictlyPalindromic(int n) {
+        return false;
+    }
