@@ -1,0 +1,11 @@
+//Maximum Number of Balloons
+    int maxNumberOfBalloons(string text) {
+        unordered_map<char,int> count;
+        for(int i=0;i<text.size();i++){
+            if(text[i]=='b'|| text[i]=='a'|| text[i]=='l'|| text[i]=='o'|| text[i]=='n'){
+                count[text[i]]++;
+            }
+        }
+        int ans=min(count['b'],min(count['a'],min(count['l']/2,min(count['o']/2,count['n']))));
+        return ans;
+    }
