@@ -1,0 +1,11 @@
+//Bulb Switcher
+    int bulbSwitch(int n) {
+        if(n==0){
+            return 0;
+        }
+        int num=1;
+        while(num*num<=n){
+            num++;
+        }
+        return num-1;     
+    }
