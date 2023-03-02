@@ -1,0 +1,50 @@
+//Find All Lonely Numbers in the Array
+//METHOD 1- O(N^2)
+    bool check(vector<int>& nums,int n){
+        int a=n-1;
+        int b=n+1;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==a || nums[i]==b){
+                return false;
+            }
+        }
+        return true;
+    }
+    vector<int> findLonely(vector<int>& nums) {
+        map<int,int> count;
+        for(int i=0;i<nums.size();i++){
+            count[nums[i]]++;
+        }
+        vector<int> temp;
+        for(auto i:count){
+            if(i.second==1){
+                temp.push_back(i.first);
+            }
+        }
+        vector<int> ans;
+        for(int i=0;i<temp.size();i++){
+            bool correct=check(nums,temp[i]);
+            if(correct){
+                ans.push_back(temp[i]);
+            }
+        }
+        return ans;
+    }
+    
+//METHOD 2-O(N)
+vector<int> findLonely(vector<int>& nums) {
+        map<int,int> count;
+        for(int i=0;i<nums.size();i++){
+            count[nums[i]]++;
+        }
+        vector<int> ans;
+        for(int i=0;i<nums.size();i++){
+            if(count[nums[i]]==1){
+                if(count.find(nums[i]+1)==count.end() && count.find(nums[i]-1)==count.end()){
+                    ans.push_back(nums[i]);
+                }
+            }
+        }
+        return ans;
+    }
+
