@@ -1,0 +1,15 @@
+//Find All Numbers Disappeared in an Array
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        int n=nums.size();
+        vector<int> freq(n+1,0);
+        for(auto i:nums){
+            freq[i]++;
+        }
+        vector<int> output;
+        for(int i=1;i<=n;i++){
+            if(freq[i]==0){
+                output.push_back(i);
+            }
+        }
+        return output;
+    }
