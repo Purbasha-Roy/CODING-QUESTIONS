@@ -1,0 +1,64 @@
+//Successful Pairs of Spells and Potions
+//METHOD 1
+vector<int> successfulPairs(vector<int>& spells, vector<int>& potions, long long success) {
+        vector<int> ans;
+        for(int i=0;i<spells.size();i++){
+            long long int x=spells[i];
+            int count=0;
+            for(int j=0;j<potions.size();j++){
+                long long int y=x*potions[j];
+                if(y>=success){
+                    count++;
+                }
+            }
+            ans.push_back(count);
+        }
+        return ans;
+    }
+    
+//METHOD 2
+    vector<int> successfulPairs(vector<int>& spells, vector<int>& potions, long long success) {
+        sort(potions.begin(),potions.end());
+        vector<int> ans;
+        for(int i=0;i<spells.size();i++){
+            long long int x=spells[i];
+            int count=0;
+            for(int j=0;j<potions.size();j++){
+                long long int y=x*potions[j];
+                if(y>=success){
+                    count=potions.size()-j;
+                    break;
+                }
+            }
+            ans.push_back(count);
+        }
+        return ans;
+    }
+    
+//METHOD 3
+    int getCounts(int & spells, vector<int>& potions, long long & success){
+        int i=0;
+        int j=potions.size()-1;
+        int best=potions.size();
+        while(i<=j){
+            int mid=(i+j)/2;
+            long long product=(long long)spells*potions[mid];
+            if(product>=success){
+                j=mid-1;
+                best=mid;
+            }
+            else{
+                i=mid+1;
+            }
+        }
+        return potions.size()-best;
+    }
+    vector<int> successfulPairs(vector<int>& spells, vector<int>& potions, long long success) {
+        sort(potions.begin(),potions.end());
+        int n=spells.size();
+        vector<int> ans(n,0);
+        for(int i=0;i<spells.size();i++){
+            ans[i]=getCounts(spells[i],potions,success);
+        }
+        return ans;
+    }
