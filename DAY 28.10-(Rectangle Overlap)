@@ -1,0 +1,13 @@
+//Rectangle Overlap
+bool isRectangleOverlap(vector<int>& rec1, vector<int>& rec2) {
+        int x1=max(rec1[0],rec2[0]);
+        int x2=min(rec1[2],rec2[2]);
+        int x=x2-x1;
+        int y1=max(rec1[1],rec2[1]);
+        int y2=min(rec1[3],rec2[3]);
+        int y=y2-y1;
+        if(y>0 && x>0){
+            return true;
+        }
+        return false;
+    }
