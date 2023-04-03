@@ -1,0 +1,23 @@
+//Top K Frequent Elements
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        map<int,int> count;
+        for(int i=0;i<nums.size();i++){
+            count[nums[i]]++;
+        }
+        multimap<int,int,greater<int>> count1;
+        for(auto it:count){
+            count1.insert(make_pair(it.second,it.first));
+        }
+        vector<int> ans;
+        int x=0;
+        for(auto it:count1){
+            if(x==k){
+                break;
+            }
+            else{
+                ans.push_back(it.second);
+                x++;
+            }
+        }
+        return ans;
+    }
