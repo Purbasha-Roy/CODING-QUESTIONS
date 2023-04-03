@@ -1,0 +1,14 @@
+//Check if All Characters Have Equal Number of Occurrences
+bool areOccurrencesEqual(string s) {
+        map<char,int> count;
+        for(int i=0;i<s.length();i++){
+            count[s[i]]++;
+        }
+        int counts=count[s[0]];
+        for(auto it:count){
+            if(counts!=it.second){
+                return false;
+            }
+        }
+        return true;
+    }
