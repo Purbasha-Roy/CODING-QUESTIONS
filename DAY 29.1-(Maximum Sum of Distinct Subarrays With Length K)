@@ -1,0 +1,29 @@
+//Maximum Sum of Distinct Subarrays With Length K
+long long maximumSubarraySum(vector<int>& nums, int k) {
+        int  i=0;
+        int j=0;
+        long long int sum=0;
+        long long int ans=0;
+        unordered_map<int,int> count;
+        int n=nums.size();
+        while(j<n){
+            if(count.find(nums[j])!=count.end()){
+                int x=count[nums[j]];
+                while(i<=x){
+                    sum=sum-nums[i];
+                    count.erase(nums[i]);
+                    i++;
+                }
+            }
+            sum=sum+nums[j];
+            count[nums[j]]=j;
+            if(j-i+1==k){
+                ans=max(ans,sum);
+                sum=sum-nums[i];
+                count.erase(nums[i]);
+                i++;
+            }
+            j++;
+        }
+        return ans;
+    }
