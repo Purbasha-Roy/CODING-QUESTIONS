@@ -1,0 +1,24 @@
+//Substrings of Size Three with Distinct Characters
+int countGoodSubstrings(string s) {
+        int i=0;
+        int j=0;
+        int n=s.size();
+        unordered_map<char,int> count;
+        int ans=0;
+        while(j<n){
+            if(count.find(s[j])!=count.end()){
+                int index=count[s[j]];
+                while(i<=index){
+                    count.erase(s[i]);
+                    i++;
+                }
+            }
+            count[s[j]]=j;
+            if(j-i+1==3){
+                ans=ans+1;
+                i++;
+            }
+            j++;
+        }
+        return ans;
+    }
