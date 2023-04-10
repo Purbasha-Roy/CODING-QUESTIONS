@@ -1,0 +1,78 @@
+//Intersection of Two Linked Lists
+//METHOD 1
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* temp1=headA;
+        unordered_set<ListNode*> c;
+        while(temp1!=NULL){
+            c.insert(temp1);
+            temp1=temp1->next;
+        }
+        ListNode* temp2=headB;
+        while(temp2!=NULL){
+            if(c.count(temp2)>0){
+                return temp2;
+            }
+            temp2=temp2->next;
+        }
+        return NULL;     
+    }
+    
+//METHOD 2
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        int lenA=0;
+        int lenB=0;
+        ListNode* tempA=headA;
+        ListNode* tempB=headB;
+        while(tempA!=NULL){
+            lenA++;
+            tempA=tempA->next;
+        } 
+        while(tempB!=NULL){
+            lenB++;
+            tempB=tempB->next;
+        }
+        tempA=headA;
+        tempB=headB;
+        if(lenA > lenB){
+            int diff=lenA-lenB;
+            while(diff--){
+                tempA=tempA->next;
+            }
+        }
+        else{
+            int diff=lenB-lenA;
+            while(diff--){
+                tempB=tempB->next;
+            }
+        }
+        while(tempA!=NULL && tempB!=NULL){
+            if(tempA == tempB){
+                return tempA;
+            }
+            tempA=tempA->next;
+            tempB=tempB->next;
+        }
+        return NULL;
+    }
+    
+ //METHOD 3
+ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* tempA=headA;
+        ListNode* tempB=headB;
+        while(tempA!=tempB){
+            if(tempA==NULL){
+                tempA=headA;
+            }
+            else{
+                tempA=tempA->next;
+            }
+            if(tempB==NULL){
+                tempB=headB;
+            }
+            else{
+                tempB=tempB->next;
+            }
+        }
+        return tempA;
+    }
+    
