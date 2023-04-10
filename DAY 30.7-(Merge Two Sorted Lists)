@@ -1,0 +1,62 @@
+//Merge Two Sorted Lists
+//METHOD 1
+ListNode* merge(ListNode* L1, ListNode* L2){
+        if(L1==NULL){
+            return L2;
+        }
+        if(L2==NULL){
+            return L1;
+        }
+        if(L1->val < L2->val){
+            L1->next=merge(L1->next,L2);
+            return L1;
+        }
+        else{
+            L2->next=merge(L1,L2->next);
+            return L2;
+        }
+    }
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        return merge(list1,list2);
+    }
+    
+//METHOD 2
+ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if(list1==NULL){
+            return list2;
+        }
+        if(list2==NULL){
+            return list1;
+        }
+        ListNode* head=NULL;
+        ListNode* l1=list1;
+        ListNode* l2=list2;
+        if(list1->val < list2->val){
+            head=l1;
+            l1=l1->next;
+        }
+        else{
+            head=l2;
+            l2=l2->next;
+        }
+        ListNode* tail=head;
+        while(l1!=NULL && l2!=NULL){
+            if(l1->val < l2->val){
+                tail->next=l1;
+                tail=l1;
+                l1=l1->next;
+            }
+            else{
+                tail->next=l2;
+                tail=l2;
+                l2=l2->next;
+            }
+        }
+        if(l1!=NULL){
+            tail->next=l1;
+        }
+        if(l2!=NULL){
+            tail->next=l2;
+        }
+        return head;
+    }
