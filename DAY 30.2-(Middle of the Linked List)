@@ -1,0 +1,27 @@
+//Middle of the Linked List
+//METHOD 1
+ ListNode* middleNode(ListNode* head) {
+        ListNode* temp=head;
+        int count=0;
+        while(temp!=NULL){
+            count++;
+            temp=temp->next;
+        }
+        int half=count/2;
+        temp=head;
+        while(half--){
+            temp=temp->next;
+        }
+        return temp;
+    }
+    
+//METHOD 2
+    ListNode* middleNode(ListNode* head) {
+        ListNode* slow=head;
+        ListNode* fast=head;
+        while(fast!=NULL && fast->next!=NULL){
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+        return slow;
+    }
