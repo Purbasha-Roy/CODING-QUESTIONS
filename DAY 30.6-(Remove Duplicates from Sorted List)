@@ -1,0 +1,18 @@
+//Remove Duplicates from Sorted List
+ListNode* deleteDuplicates(ListNode* head) {
+        ListNode* temp=head;
+        if(head==NULL){
+            return NULL;
+        }
+        while(temp->next!=NULL){
+            if(temp->val==temp->next->val){
+                ListNode* n=temp->next;
+                temp->next=temp->next->next;
+                delete n;
+            }
+            else{
+                temp=temp->next;
+            }            
+        }
+        return head;
+    }
