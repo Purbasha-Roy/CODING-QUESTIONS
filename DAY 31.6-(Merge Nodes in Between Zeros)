@@ -1,0 +1,20 @@
+//Merge Nodes in Between Zeros
+ListNode* mergeNodes(ListNode* head) {
+        ListNode* temp=head;
+        ListNode* dummy=new ListNode(0);
+        ListNode* prev=dummy;
+        int sum=0;
+        temp=temp->next;
+        while(temp!=NULL){
+            if(temp->val == 0){
+                prev->next=new ListNode(sum);
+                prev=prev->next;
+                sum=0;
+            }
+            else{
+                sum=sum+temp->val;
+            }
+            temp=temp->next;
+        }
+        return dummy->next;     
+    }
