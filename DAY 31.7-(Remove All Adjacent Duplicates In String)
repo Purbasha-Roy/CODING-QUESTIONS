@@ -1,0 +1,35 @@
+//Remove All Adjacent Duplicates In String
+//METHOD 1
+string removeDuplicates(string s) {
+        string ans="";
+        stack<char> c;
+        c.push(s[0]);
+        for(int i=1;i<s.size();i++){
+            if(c.empty() || c.top()!=s[i]){
+                c.push(s[i]);
+            }
+            else{
+                c.pop();
+            }
+        }
+        while(!c.empty()){
+            ans=ans+c.top();
+            c.pop();
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;  
+    }
+    
+//METHOD 2
+    string removeDuplicates(string s) {  
+        string ans;
+        for(int i=0;i<s.size();i++){
+            if(ans.back()==s[i]){
+                ans.pop_back();
+            }
+            else{
+                ans.push_back(s[i]);
+            }
+        }
+        return ans;
+    }
