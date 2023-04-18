@@ -1,0 +1,42 @@
+//Partition List
+    ListNode* partition(ListNode* head, int x) {
+        ListNode* right=NULL;
+        ListNode* left=NULL;
+        ListNode* lefthead=NULL;
+        ListNode* righthead=NULL;
+        ListNode* temp=head;
+        if(head==NULL){
+            return head;
+        }
+        while(temp!=NULL){
+            if(temp->val<x){
+                if(left==NULL){
+                    left=temp;
+                    lefthead=left;
+                }
+                else{
+                    left->next=temp;
+                    left=temp;
+                }
+            }
+            else{
+                if(right==NULL){
+                    right=temp;
+                    righthead=right;
+                }
+                else{
+                    right->next=temp;
+                    right=temp;
+                }
+            }
+            temp=temp->next;
+        }
+        if(lefthead==NULL){
+            return righthead;
+        }
+        left->next=righthead;
+        if(right!=NULL){
+            right->next=NULL;
+        }
+        return lefthead;  
+    }
