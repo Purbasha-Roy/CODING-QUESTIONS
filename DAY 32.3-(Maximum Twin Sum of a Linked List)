@@ -1,0 +1,41 @@
+//Maximum Twin Sum of a Linked List
+//METHOD 1
+int pairSum(ListNode* head) {
+        ListNode* temp=head;
+        vector<int> out;
+        while(temp!=NULL){
+            out.push_back(temp->val);
+            temp=temp->next;
+        }
+        int i=0;
+        int ans=0;
+        int n=out.size();
+        while(i<=((n / 2) - 1)){
+            int sum=out[i]+out[n-1-i];
+            ans=max(ans,sum);
+            i++;
+        }
+        return ans;
+    }
+    
+//METHOD 2
+    int pairSum(ListNode* head) {
+        ListNode* slow=head;
+        ListNode* fast=head;
+        ListNode* prev=NULL;
+        while(fast!=NULL && fast->next!=NULL){
+            fast=fast->next->next;
+            ListNode* temp=slow->next;
+            slow->next=prev;
+            prev=slow;
+            slow=temp;
+        }
+        int ans=0;
+        while(slow!=NULL){
+            int sum=slow->val+prev->val;
+            ans=max(ans,sum);
+            slow=slow->next;
+            prev=prev->next;
+        }
+        return ans;
+    }
