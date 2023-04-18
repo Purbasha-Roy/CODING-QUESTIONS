@@ -1,0 +1,42 @@
+//Odd Even Linked List
+ListNode* oddEvenList(ListNode* head) {
+        int k=1;
+        ListNode* temp=head;
+        if(head==NULL){
+            return head;
+        }
+        ListNode* odd=NULL;
+        ListNode* oddhead=NULL;
+        ListNode* even=NULL;
+        ListNode* evenhead=NULL;
+        while(temp!=NULL){
+            if(k%2==0){
+                if(even==NULL){
+                    even=temp;
+                    evenhead=even;
+                }
+                else{
+                    even->next=temp;
+                    even=even->next;
+                }
+            }
+            else{
+                if(odd==NULL){
+                    odd=temp;
+                    oddhead=odd;
+                }
+                else{
+                    odd->next=temp;
+                    odd=odd->next;
+                }
+            }
+            k++;
+            temp=temp->next;
+        }
+        if(even!=NULL){
+            even->next=NULL;
+        }
+        odd->next=evenhead;
+        return oddhead;
+        
+    }
