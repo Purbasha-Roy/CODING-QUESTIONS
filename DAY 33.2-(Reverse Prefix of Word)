@@ -1,0 +1,27 @@
+//Reverse Prefix of Word
+    string reversePrefix(string word, char ch) {
+        string ans;
+        int j=0;
+        int n=word.size();
+        bool found=false;
+        string output;
+        for(int i=0;i<word.size();i++){
+            if(word[i]==ch){
+                found=true;
+                ans.push_back(word[i]);
+                reverse(ans.begin(),ans.end());
+                output=output+ans;
+                j++;
+                break;
+            }
+            else{
+                ans.push_back(word[i]);
+                j++;
+            }
+        }
+        if(!found){
+            return word;
+        }
+        output=output+word.substr(j,n-j);
+        return output;
+    }
