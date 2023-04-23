@@ -1,0 +1,19 @@
+//Reverse Words in a String III
+    string reverseWords(string s) {
+        string ans;
+        string output;
+        for(int i=0;i<s.size();i++){
+            if(s[i]==' '){
+                reverse(ans.begin(),ans.end());
+                output=output+ans;
+                output=output+' ';
+                ans.clear();
+            }
+            else{
+                ans.push_back(s[i]);
+            }
+        }
+        reverse(ans.begin(),ans.end());
+        output=output+ans;
+        return output;
+    }
