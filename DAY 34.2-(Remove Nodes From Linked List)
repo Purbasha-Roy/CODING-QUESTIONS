@@ -1,0 +1,25 @@
+//Remove Nodes From Linked List
+//METHOD 1
+ListNode* removeNodes(ListNode* head) {
+        vector<int> ans;
+        ListNode* temp=head;
+        while(temp!=NULL){
+            if(ans.size()==0){
+                ans.push_back(temp->val);
+            }
+            else{
+                while(ans.size()!=0 && temp->val > ans.back()){
+                    ans.pop_back();
+                }
+                ans.push_back(temp->val);
+            }
+            temp=temp->next;
+        }
+        ListNode* root=new ListNode(ans[0]);
+        temp=root;
+        for(int i=1;i<ans.size();i++){
+            temp->next=new ListNode(ans[i]);
+            temp=temp->next;
+        }
+        return root;
+    }
