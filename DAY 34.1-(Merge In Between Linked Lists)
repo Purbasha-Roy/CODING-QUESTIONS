@@ -1,0 +1,24 @@
+//Merge In Between Linked Lists
+ListNode* mergeInBetween(ListNode* list1, int a, int b, ListNode* list2) {
+        int count=0;
+        ListNode* temp=list1;
+        ListNode* anode=NULL;
+        ListNode* bnode=NULL;
+        while(temp!=NULL){
+            if(count==a-1){
+                anode=temp;
+            }
+            else if(count==b+1){
+                bnode=temp;
+            }
+            count++;
+            temp=temp->next;
+        }
+        anode->next=list2;
+        temp=list2;
+        while(temp->next!=NULL){
+            temp=temp->next;
+        }
+        temp->next=bnode;
+        return list1;    
+    }
