@@ -1,0 +1,30 @@
+//Dota2 Senate
+    string predictPartyVictory(string senate) {
+        queue<int> qr;
+        queue<int> qd;
+        int n=senate.length();
+        for(int i=0;i<n;i++){
+            if(senate[i]=='R'){
+                qr.push(i);
+            }
+            else{
+                qd.push(i);
+            }
+        }
+        while(!qr.empty() && !qd.empty()){
+            int rindex=qr.front();
+            int dindex=qd.front();
+            qr.pop();
+            qd.pop();
+            if(rindex < dindex){
+                qr.push(rindex+n);
+            }
+            else{
+                qd.push(dindex+n);
+            }
+        }
+        if(qr.empty()){
+            return "Dire";
+        }
+        return "Radiant";
+    }
