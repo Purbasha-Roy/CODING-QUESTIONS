@@ -1,0 +1,20 @@
+//Valid Square
+    bool validSquare(vector<int>& p1, vector<int>& p2, vector<int>& p3, vector<int>& p4) {
+        set<int> c;
+        int d1=pow((p2[0]-p1[0]),2)+pow((p2[1]-p1[1]),2);
+        int d2=pow((p3[0]-p2[0]),2)+pow((p3[1]-p2[1]),2);
+        int d3=pow((p4[0]-p3[0]),2)+pow((p4[1]-p3[1]),2);
+        int d4=pow((p4[0]-p1[0]),2)+pow((p4[1]-p1[1]),2);
+        int d5=pow((p3[0]-p1[0]),2)+pow((p3[1]-p1[1]),2);
+        int d6=pow((p4[0]-p2[0]),2)+pow((p4[1]-p2[1]),2);
+        c.insert(d1);
+        c.insert(d2);
+        c.insert(d3);
+        c.insert(d4);
+        c.insert(d5);
+        c.insert(d6);
+        if(c.size()==2 && !c.count(0)){
+            return true;
+        }
+       return false;
+    }
