@@ -1,0 +1,33 @@
+//Number of Subsequences That Satisfy the Given Sum Condition
+    int mod=1e9+7;
+    long long power(long long x,long long y){
+        long long ans=1;
+        while(y){
+            if(y%2==0){
+                x=(x*x) % mod;
+                y=y/2;
+            }
+            else{
+                ans=(ans*x) % mod;
+                y--;
+            }
+        }
+        return ans%mod;
+    }
+    int numSubseq(vector<int>& nums, int target) {
+        sort(nums.begin(),nums.end());
+        int i=0;
+        int j=nums.size()-1;
+        int ans=0;
+        while(i<=j){
+            if(nums[i]+nums[j]<=target){
+                ans=ans+power(2,j-i);
+                ans=ans%mod;
+                i++;
+            }
+            else{
+                j--;
+            }
+        }
+        return ans%mod;
+    }
