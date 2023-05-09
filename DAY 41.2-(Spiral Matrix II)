@@ -1,0 +1,38 @@
+//Spiral Matrix II
+vector<vector<int>> generateMatrix(int n) {
+        int value=1;
+        int total=n*n;
+        int count=0;
+        int startrow=0;
+        int startcol=0;
+        int endrow=n-1;
+        int endcol=n-1;
+        vector<vector<int>> ans(n, vector<int>(n,0));
+        while(count<total){
+            for(int i=startcol;i<=endcol;i++){
+                ans[startrow][i]=value;
+                value++;
+                count++;
+            }
+            startrow++;
+            for(int i=startrow;i<=endrow;i++){
+                ans[i][endcol]=value;
+                value++;
+                count++;
+            }
+            endcol--;
+            for(int i=endcol;i>=startcol;i--){
+                ans[endrow][i]=value;
+                value++;
+                count++;
+            }
+            endrow--;
+            for(int i=endrow;i>=startrow;i--){
+                ans[i][startcol]=value;
+                value++;
+                count++;
+            }
+            startcol++;
+        }
+        return ans; 
+    }
